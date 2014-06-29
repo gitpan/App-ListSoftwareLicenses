@@ -6,7 +6,7 @@ use warnings;
 use experimental 'smartmatch';
 
 our $DATE = '2014-06-29'; # DATE
-our $VERSION = '0.01'; # VERSION
+our $VERSION = '0.02'; # VERSION
 
 use CHI;
 
@@ -52,11 +52,12 @@ my $table_spec = {
             index    => 6,
             sortable => 1,
         },
-        #fulltext => {
-        #    schema   => 'str*',
-        #    index    => 7,
-        #    sortable => 1,
-        #},
+        text => {
+            schema   => 'str*',
+            index    => 7,
+            sortable => 1,
+            include_by_default => 0,
+        },
     },
     pk => 'module',
 };
@@ -74,13 +75,13 @@ my $table_data = $cache->compute(
             next if $row->[0] ~~ @excluded;
             Module::Load::load($row->[0]);
             my $o = $row->[0]->new({holder => 'Copyright_Holder'});
-            $row->[1]  = $o->meta_name;
-            $row->[2]  = $o->meta2_name;
-            $row->[3]  = $o->name;
-            $row->[4]  = $o->version;
-            $row->[5]  = $o->url;
-            $row->[6]  = $o->notice;
-            #$row->[7] = $o->fulltext;
+            $row->[1] = $o->meta_name;
+            $row->[2] = $o->meta2_name;
+            $row->[3] = $o->name;
+            $row->[4] = $o->version;
+            $row->[5] = $o->url;
+            $row->[6] = $o->notice;
+            $row->[7] = $o->license;
         }
         $data;
     });
@@ -121,7 +122,7 @@ App::ListSoftwareLicenses - List all Software::License's
 
 =head1 VERSION
 
-This document describes version 0.01 of App::ListSoftwareLicenses (from Perl distribution App-ListSoftwareLicenses), released on 2014-06-29.
+This document describes version 0.02 of App::ListSoftwareLicenses (from Perl distribution App-ListSoftwareLicenses), released on 2014-06-29.
 
 =head1 FUNCTIONS
 
@@ -385,6 +386,50 @@ Order records according to certain field(s).
 A list of field names separated by comma. Each field can be prefixed with '-' to
 specify descending order instead of the default ascending.
 
+=item * B<text> => I<str>
+
+Only return records where the 'text' field equals specified value.
+
+=item * B<text.contains> => I<str>
+
+Only return records where the 'text' field contains specified text.
+
+=item * B<text.in> => I<array>
+
+Only return records where the 'text' field is in the specified values.
+
+=item * B<text.is> => I<str>
+
+Only return records where the 'text' field equals specified value.
+
+=item * B<text.isnt> => I<str>
+
+Only return records where the 'text' field does not equal specified value.
+
+=item * B<text.max> => I<str>
+
+Only return records where the 'text' field is less than or equal to specified value.
+
+=item * B<text.min> => I<str>
+
+Only return records where the 'text' field is greater than or equal to specified value.
+
+=item * B<text.not_contains> => I<str>
+
+Only return records where the 'text' field does not contain specified text.
+
+=item * B<text.not_in> => I<array>
+
+Only return records where the 'text' field is not in the specified values.
+
+=item * B<text.xmax> => I<str>
+
+Only return records where the 'text' field is less than specified value.
+
+=item * B<text.xmin> => I<str>
+
+Only return records where the 'text' field is greater than specified value.
+
 =item * B<url> => I<str>
 
 Only return records where the 'url' field equals specified value.
@@ -472,6 +517,10 @@ Only return records where the 'version' field is less than specified value.
 =item * B<version.xmin> => I<str>
 
 Only return records where the 'version' field is greater than specified value.
+
+=item * B<with.text> => I<bool> (default: 0)
+
+Show field 'with'.
 
 =item * B<with_field_names> => I<bool>
 

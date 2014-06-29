@@ -6,7 +6,7 @@ use warnings;
 use Perinci::CmdLine 1.04;
 
 our $DATE = '2014-06-29'; # DATE
-our $VERSION = '0.01'; # VERSION
+our $VERSION = '0.02'; # VERSION
 
 our %SPEC;
 
@@ -39,7 +39,7 @@ list-software-licenses - List all Software::License's
 
 =head1 VERSION
 
-This document describes version 0.01 of list-software-licenses (from Perl distribution App-ListSoftwareLicenses), released on 2014-06-29.
+This document describes version 0.02 of list-software-licenses (from Perl distribution App-ListSoftwareLicenses), released on 2014-06-29.
 
 =head1 SYNOPSIS
 

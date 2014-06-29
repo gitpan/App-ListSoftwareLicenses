@@ -2,7 +2,7 @@ NAME
     App::ListSoftwareLicenses - List all Software::License's
 
 VERSION
-    This document describes version 0.01 of App::ListSoftwareLicenses (from
+    This document describes version 0.02 of App::ListSoftwareLicenses (from
     Perl distribution App-ListSoftwareLicenses), released on 2014-06-29.
 
 FUNCTIONS
@@ -309,6 +309,58 @@ FUNCTIONS
         with '-' to specify descending order instead of the default
         ascending.
 
+    *   text => *str*
+
+        Only return records where the 'text' field equals specified value.
+
+    *   text.contains => *str*
+
+        Only return records where the 'text' field contains specified text.
+
+    *   text.in => *array*
+
+        Only return records where the 'text' field is in the specified
+        values.
+
+    *   text.is => *str*
+
+        Only return records where the 'text' field equals specified value.
+
+    *   text.isnt => *str*
+
+        Only return records where the 'text' field does not equal specified
+        value.
+
+    *   text.max => *str*
+
+        Only return records where the 'text' field is less than or equal to
+        specified value.
+
+    *   text.min => *str*
+
+        Only return records where the 'text' field is greater than or equal
+        to specified value.
+
+    *   text.not_contains => *str*
+
+        Only return records where the 'text' field does not contain
+        specified text.
+
+    *   text.not_in => *array*
+
+        Only return records where the 'text' field is not in the specified
+        values.
+
+    *   text.xmax => *str*
+
+        Only return records where the 'text' field is less than specified
+        value.
+
+    *   text.xmin => *str*
+
+        Only return records where the 'text' field is greater than specified
+        value.
+
     *   url => *str*
 
         Only return records where the 'url' field equals specified value.
@@ -415,6 +467,10 @@ FUNCTIONS
 
         Only return records where the 'version' field is greater than
         specified value.
+
+    *   with.text => *bool* (default: 0)
+
+        Show field 'with'.
 
     *   with_field_names => *bool*
 
