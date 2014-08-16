@@ -5,8 +5,8 @@ use strict;
 use warnings;
 use experimental 'smartmatch';
 
-our $DATE = '2014-06-29'; # DATE
-our $VERSION = '0.02'; # VERSION
+our $DATE = '2014-08-16'; # DATE
+our $VERSION = '0.03'; # VERSION
 
 use CHI;
 
@@ -122,7 +122,7 @@ App::ListSoftwareLicenses - List all Software::License's
 
 =head1 VERSION
 
-This document describes version 0.02 of App::ListSoftwareLicenses (from Perl distribution App-ListSoftwareLicenses), released on 2014-06-29.
+This document describes version 0.03 of App::ListSoftwareLicenses (from Perl distribution App-ListSoftwareLicenses), released on 2014-08-16.
 
 =head1 FUNCTIONS
 
@@ -542,6 +542,8 @@ First element (status) is an integer containing HTTP status code
 200. Third element (result) is optional, the actual result. Fourth
 element (meta) is called result metadata and is optional, a hash
 that contains extra information.
+
+ (any)
 
 =head1 SEE ALSO
 

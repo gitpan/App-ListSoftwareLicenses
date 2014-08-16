@@ -2,8 +2,8 @@ NAME
     App::ListSoftwareLicenses - List all Software::License's
 
 VERSION
-    This document describes version 0.02 of App::ListSoftwareLicenses (from
-    Perl distribution App-ListSoftwareLicenses), released on 2014-06-29.
+    This document describes version 0.03 of App::ListSoftwareLicenses (from
+    Perl distribution App-ListSoftwareLicenses), released on 2014-08-16.
 
 FUNCTIONS
   list_software_licenses(%args) -> [status, msg, result, meta]
@@ -490,6 +490,8 @@ FUNCTIONS
     element (result) is optional, the actual result. Fourth element (meta)
     is called result metadata and is optional, a hash that contains extra
     information.
+
+     (any)
 
 SEE ALSO
     Software::License

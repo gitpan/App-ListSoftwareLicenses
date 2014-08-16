@@ -1,29 +1,24 @@
-#!/usr/bin/perl
+#!perl
+
+# Note: This script is a CLI interface to Riap function /App/ListSoftwareLicenses/list_software_licenses
+# and generated automatically using Dist::Zilla::Plugin::Rinci::ScriptFromFunc version 0.01
+
+our $DATE = '2014-08-16'; # DATE
+our $VERSION = '0.03'; # VERSION
 
 use 5.010001;
 use strict;
 use warnings;
-use Perinci::CmdLine 1.04;
 
-our $DATE = '2014-06-29'; # DATE
-our $VERSION = '0.02'; # VERSION
+use Perinci::CmdLine::Any;
 
-our %SPEC;
+# snippet_before_instantiate_cmdline
+require App::ListSoftwareLicenses; { no warnings; $App::ListSoftwareLicenses::SPEC{list_software_licenses}{args}{detail}{cmdline_aliases} = {V=>{}}; } # convenience
 
-# add -V as the alias for --detail, for convenience
-require App::ListSoftwareLicenses;
-{
-    no warnings;
-    $App::ListSoftwareLicenses::SPEC{list_software_licenses}
-        {args}{detail}{cmdline_aliases} = {V=>{}};
-}
-
-Perinci::CmdLine->new(
-    log_any_app => 0,
-    url => '/App/ListSoftwareLicenses/list_software_licenses',
+Perinci::CmdLine::Any->new(
+    url => "/App/ListSoftwareLicenses/list_software_licenses",
 )->run;
 
-1;
 # ABSTRACT: List all Software::License's
 # PODNAME: list-software-licenses
 
@@ -39,12 +34,29 @@ list-software-licenses - List all Software::License's
 
 =head1 VERSION
 
-This document describes version 0.02 of list-software-licenses (from Perl distribution App-ListSoftwareLicenses), released on 2014-06-29.
+This document describes version 0.03 of list-software-licenses (from Perl distribution App-ListSoftwareLicenses), released on 2014-08-16.
 
 =head1 SYNOPSIS
 
+Usage:
+
  % list-software-licenses
+
+Examples:
+
+ TODO
+
+To see all options:
+
  % list-software-licenses --help
+
+=head1 DESCRIPTION
+
+REPLACE ME
+
+=head1 OPTIONS
+
+ TODO
 
 =head1 HOMEPAGE
 
